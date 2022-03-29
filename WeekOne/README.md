@@ -2,7 +2,7 @@
 Final Project for CS371 - Jiali Graham and Eric Xing
 
 Week One's Progress (3-21-22 to 2-25-22)
-  As of right now, we have three files, the Driver_XOR, FC_Layer, Net, and ReLU file. 
+  As of right now, we have four files, the Driver_XOR, FC_Layer, Net, and ReLU file. 
   
   The Driver_XOR file runs the XOR test with an expected output of [0, 1, 1, 0]. The Loss Function and its derivative are also found here under the Mean Square Error. 
   FC_Layer runs the data through the layer and trains it. 
@@ -11,10 +11,10 @@ Week One's Progress (3-21-22 to 2-25-22)
   
 Issues 
     - Object cannot go into a vector 
-      >>> Solved: 
+        Solved: 
       
     - Driver is not recognizing the FC_Layer's functions
-      >>> Solved: We have declared each method 'Static' or 'Non-static' in order to prevent confusion from MatLab.
+        Solved: We have declared each method 'Static' or 'Non-static' in order to prevent confusion from MatLab.
     
   
 Future Plans
