@@ -10,14 +10,12 @@ Week One's Progress (3-21-22 to 2-25-22)
   Net is where the data is inputted, layers and loss function are added. 
   
 Issues 
-    - Object cannot go into a vector 
-        Solved: 
-      
+    - Object cannot go into a vector (essentially, MatLab couldn't differentiate between the original object and a clone object with what was being changed)
+        Solved: Created a cell array
     - Driver is not recognizing the FC_Layer's functions
         Solved: We have declared each method 'Static' or 'Non-static' in order to prevent confusion from MatLab.
-    
-  
-Future Plans
+ 
+  Future Plans
   In the future, we plan to implement activation layeres which will change our added .5 to a different function of the user's choosing. We are still following our timeline given in the proposal. 
   Therefore, moving forward into Week Ten we plan to let our code accommodate CNN models, a basic feed-forward mechanism, back propogation, and a gradient descent for convolutional kernel. 
   
