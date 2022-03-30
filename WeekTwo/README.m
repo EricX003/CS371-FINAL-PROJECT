@@ -9,7 +9,10 @@ Week Two's Progress (3-28-22 to 4-1-22)
   ReLU: makes sure no negative numebrs pass through 
   Activation Layer: runs in between FC_Layer and can shift the added .5 to a function of the user's choosing
   
-Issues: 
+Issues
+
+'Leaky reLU' causing a NaN result
+  Solved: We took the derivative correctly.
 
 
   
