@@ -1,4 +1,4 @@
-% Activation Layer 
+ % Activation Layer runs the derivative of the function you input as the weight
 classdef Activation_Layer
 
     % Lists all values needed for the file
@@ -14,6 +14,7 @@ classdef Activation_Layer
     
         % Based on user input and shifts the function type
         function obj = Activation_Layer(type)
+             % Switch case that registers what function you have and based off of that, runs the math function for the weight replacement 
              switch type
                  case 'tanh'
                      obj.act = @(x) tanh(x);
@@ -24,6 +25,8 @@ classdef Activation_Layer
                  case 'sigmoid'
                      obj.act = @(x) 1 ./ (1 + exp(-x));
                      obj.d_act = @(x) exp(-x) ./ (x + exp(-x)) .^ 2;
+                     
+                     % Default function
                  otherwise
                      obj.act = @(x) obj.ReLU(x);
                      obj.d_act = @(x) obj.d_ReLU(x);
