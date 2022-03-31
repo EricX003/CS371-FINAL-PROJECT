@@ -16,7 +16,10 @@ Issues
     Solved: We took the derivative correctly.
 
 We have deviated from our project proposal slightly, by making the ANN more comprehensible compared to other programs before moving onto CNN. 
-Therefore, future plans have altered somewhat. In Week Eleven we will be working to make our code accomodate CNN models. 
+Therefore, future plans have altered somewhat. In Week Eleven we will be working to make our code accomodate CNN models and test existing code. 
+In Week Twelve we willcreate an intelligent data identification algorithm, along with preparing a presentation. In Week 12 we will test the code 
+with stress tests for dimension mismatches, along with validating the performance on basic datasets (Kather5000). The second project report will
+also be written in that week. And on Week 14 we will finalize and turn in the program.
 
 Eric's Contributions:
 
