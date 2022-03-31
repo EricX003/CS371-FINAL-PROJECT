@@ -1,4 +1,4 @@
-% This is the Step Scheduler file which adjusts the learning rate for a smoother descent
+% This is the Step Scheduler file which adjusts the learning rate for more accuracy 
 classdef Step_LR_Scheduler
     
     % This lists variables needed
