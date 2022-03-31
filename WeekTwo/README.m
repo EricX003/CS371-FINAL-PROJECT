@@ -18,7 +18,7 @@ We have deviated from our project proposal slightly, by making the ANN more comp
 Eric's Contributions:
 
 Jiali's Contributions:
-Writing 
+Written comments, writing overview, writing report
 
 
   
