@@ -22,13 +22,14 @@ classdef Net
             obj.layers{end + 1} = layer;
         end
         
-        
+        % Outputs prediction which causes the network to adjust its weights based off of this prediction to achieve more accuracy
         function prediction = predict(obj, x)
             prediction = {};
             for data_idx = 1:length(x)
 
                     data = x{data_idx};
-
+                    
+                    % Bases prediction off of the last layers results
                     for idx = 1:length(obj.layers)
                         [data, obj.layers{idx}] = obj.layers{idx}.forward(data);
                     end
@@ -46,7 +47,7 @@ classdef Net
 
             last = -1;
             
-            
+            % Occurs every full iteration (epoch)
             for epoch = 1:EPOCHS
                 %disp("Epoch")
                 total_loss = 0;
@@ -65,9 +66,10 @@ classdef Net
                     cur_d_loss = obj.d_loss(y{data_idx}, data);
 %                     disp(["Loss" cur_d_loss]);
                     
-                    
+                    %Runs through the layers backwards
                     for idx = length(obj.layers):-1:1
 %                         disp(["LAYER# " idx])
+                        % Backpropogation occurs based on the layer, the derivative's current loss, and learn rate
                         [cur_d_loss, obj.layers{idx}]= back(obj.layers{idx}, cur_d_loss, LR);
                     end
     
@@ -80,10 +82,11 @@ classdef Net
                 end
                 last = total_loss;
                 
-                % Gives the LR based off of Step_LR_Scheduler's step function
+                % LR is based off of Step_LR_Scheduler's step function
                 LR = scheduler.step();
             end
             
+            % Assigns the object to become the newest model
             model = obj;
             
         end
