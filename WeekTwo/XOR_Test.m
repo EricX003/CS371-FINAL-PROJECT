@@ -1,4 +1,4 @@
-% This file contains the XOR Test 
+% This file contains the XOR Test, which acts as our test cases currently
 
 % Expected values 
 x_train = {[0, 0]; [0, 1]; [1, 0]; [1, 1]};
