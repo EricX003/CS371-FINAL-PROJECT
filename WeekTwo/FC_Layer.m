@@ -31,7 +31,8 @@ classdef FC_Layer
 %             disp(["OBJ WEIGHT" size(obj.weight)])
 %             disp(["OBJ IN" size(obj.in)])
 %             disp(["LOSS" size(loss)])
-
+            
+            % Reassigns the variables for the next run through
             obj.weight = obj.weight - LR * obj.in' * loss;
             obj.bias = obj.bias - LR * loss;
 
