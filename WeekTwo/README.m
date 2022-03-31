@@ -5,7 +5,7 @@ Week Two's Progress (3-28-22 to 4-1-22)
   We also have the basic feed-forward mechanism (FC and Activation Layers) and back propogation (calculation of the Loss and editing weights through gradient loss). 
   In addition, we have been adding comments onto the code to make it more understandable for an outside perspective. 
   
-  Driver_XOR: contains XOR test, expected outputs are [0, 1, 1, 0] and so far are sucessful.
+  XOR_Test (previously Driver_XOR): contains XOR test, expected outputs are [0, 1, 1, 0] and so far are sucessful.
   FC_Layer: creates a fully-connected layer and pushes the data to the next layer
   Net: calls all the layers, takes the input, loss function initializiation and creation 
   ReLU: makes sure no negative numebrs pass through 
