@@ -1,4 +1,4 @@
-% This is the Step Scheduler file which adjusts the learning rate for more accuracy 
+% This is the Step Scheduler file which adjusts the learning rate for fine-tuned gradient descent
 classdef Step_LR_Scheduler
     
     % This lists variables needed
@@ -10,7 +10,7 @@ classdef Step_LR_Scheduler
     end
 
     methods
-        % This has all the original values inputted in
+    
         function obj = Step_LR_Scheduler(STEP_SIZE, GAMMA, LR)
             obj.STEP_SIZE = STEP_SIZE;
             obj.GAMMA = GAMMA;
@@ -18,7 +18,7 @@ classdef Step_LR_Scheduler
             obj.LR = LR;
         end
         
-        % After every step size (ie. if stepsize is 3 then after every 3 iterations) it decreases the learning rate 
+        % Adjusts the LR by GAMMA every STEP_SIZE steps
         function LR = step(obj)
             obj.idx = obj.idx + 1;
             if mod(obj.idx, obj.STEP_SIZE) == obj.STEP_SIZE
