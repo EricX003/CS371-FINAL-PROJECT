@@ -10,10 +10,8 @@ Week One's Progress (3-21-22 to 2-25-22)
   Net is where the data is inputted, layers and loss function are added. 
   
 Issues 
-    - Object cannot go into a vector (essentially, MatLab couldn't differentiate between the original object and a clone object with what was being changed)
-        Solved: Created a cell array
-    - Driver is not recognizing the FC_Layer's functions
-        Solved: We have declared each method 'Static' or 'Non-static' in order to prevent confusion from MatLab.
+    - Vector container objects cannot hold user-defined objects 
+        Solved: Created a cell array (Possibly produced a bug that caused nonstatic methods to perform operations on clones of the target object, which leads to no update being performed on the passed object)
  
   Future Plans
   In the future, we plan to implement activation layeres which will change our added .5 to a different function of the user's choosing. We are still following our timeline given in the proposal. 
