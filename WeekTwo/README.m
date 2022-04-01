@@ -13,7 +13,7 @@ Week Two's Progress (3-28-22 to 4-1-22)
   Activation Layer: runs in between FC_Layer and can shift the added .5 to a function of the user's choosing
   
 Issues
-- 'Leaky reLU' causing a NaN result
+- 'Leaky ReLU' causing a NaN result
     Solved: We took the derivative correctly.
 
 We have deviated from our project proposal slightly, by making the ANN more comprehensible compared to other programs before moving onto CNN. 
