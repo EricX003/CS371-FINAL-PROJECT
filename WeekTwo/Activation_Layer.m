@@ -1,7 +1,7 @@
- % Activation Layer runs the derivative of the function you input as the weight
+ % Has capactiy to apply activation function to input and backpropogate the derivative of the activation function during gradient descent.
 classdef Activation_Layer
 
-    % Lists all values needed for the file
+    % All values needed
     properties
         in
         out
@@ -9,12 +9,12 @@ classdef Activation_Layer
         d_act
     end
 
-    % Sets methods below to non-static
+    % Non-static methods
     methods (Static = false)
     
-        % Based on user input and shifts the function type
+        % Based on user input, the layer's activation finction is set
         function obj = Activation_Layer(type)
-             % Switch case that registers what function you have and based off of that, runs the math function for the weight replacement 
+             % Switch case that detects your activation function choice, set the function and its derivative
              switch type
                  case 'tanh'
                      obj.act = @(x) tanh(x);
@@ -34,41 +34,37 @@ classdef Activation_Layer
 
         end
 
-        % Based off of their chosen function, pushes the data forward with the calculated weight and bias
+        % Based off of chosen function, applies activation function to teh data
         function [output, obj] = forward(obj, in)
             obj.in = in;
             obj.out = obj.act(obj.in);
             output = obj.out;
         end
         
-        % Backpropogation that readjusts based on their chosen function, therefore lowering the Loss 
+        % Backpropogation that modifies the loss in order to fit FC layers
         function [dEdX, obj] = back(obj, loss, LR)
             dEdX = obj.d_act(obj.in) .* loss;
         end
 
     end
     
-    % Sets any methods below to static methods
+    % Static Functions
     methods(Static = true)
         
-        % ReLU(x) = max(0, x), doesn't let anything be negative
         function x = ReLU(x)
             x(x < 0) = 0;
         end
         
-        % This function sets negative numbers to 0 and positive to 1 for the slope
         function d_x = d_ReLU(x)
             x(x > 0) = 1;
             x(x < 0) = 0;
             d_x = x;
         end
         
-        % Allows some negatives not all 
         function x = Leaky_ReLU(x)
             x(x < 0) = 0.1 * x(x < 0);
         end
         
-        % Allows some negatives but not all 
         function d_x = d_Leaky_ReLU(x)
             x(x > 0) = 1;
             x(x < 0) = 0.1;
