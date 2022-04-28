@@ -20,10 +20,12 @@ classdef SoftMax
             obj.bias = randn(1, out) - 0.5;
 
         end
-
+        
+        % Function to perform forward propogation
         function [obj, out] = forward(obj, in)
 
             obj.last_size = size(in);
+            % Reshapes the input into a single-rowed vector
             obj.in = reshape(in, [1, numel(in)]);
 
 %             disp(obj.in_size);
@@ -35,7 +37,8 @@ classdef SoftMax
 
             out = obj.e_power ./ sum(obj.e_power);
         end
-
+        
+        % Function to perform backpropagation
         function [obj, out] = back(obj, dL, LR)
             for idx = 1:length(dL)
                 grad = dL(idx);
@@ -56,7 +59,8 @@ classdef SoftMax
 %                     disp(size(grad .* dOut));
 
                     dLdIN = obj.weight * (grad .* dOut)';
-
+                    
+                    % Readjusts the weights and bias 
                     obj.weight = obj.weight - LR * dLdW;
                     obj.bias = obj.bias - LR * dLdB;
 
