@@ -9,7 +9,8 @@ classdef MaxPooling
         function obj = MaxPooling(width)
             obj.PoolingSize = width;
         end
-
+        
+        % Function to perform forward propogation
         function [obj, out] = forward(obj, in)
 
             obj.in = in;
@@ -23,7 +24,8 @@ classdef MaxPooling
                 end
             end
         end
-
+        
+        % Function to perform backward propogation
         function [obj, dLdIn] = back(obj, dLdOut, LR)
 
             dLdIn = zeros(size(obj.in));
