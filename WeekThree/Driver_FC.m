@@ -1,15 +1,21 @@
+% Prompt for user 
 path = input("Please input the path to your data, enclosed in double quotes: ");
 
+% Prompt if the user's input is not valid
 while ~isfile(path)
     path = input("Try again, your previous input was not a valid path: ", 's');
 end
 
+% Reads in the user's data as a table
 data = readtable(path);
 
+% Gets the variable names
 header = data.Properties.VariableNames;
 
+% Turns the table to an array
 data = table2array(data);
 
+% Returns a random permutation of the data 
 data = data(randperm(size(data, 1)), :);
 
 [num_rows, num_cols] = size(data);
@@ -18,8 +24,10 @@ label_specified = false;
 label_idx = -1;
 
 while ~label_specified
+    % Prompt for user to specify name/index of ground-truth label
     label_index_method = input("Would you like to specify the name or index of the ground-truth label? Please write either name or index: ", 's');
-
+    
+    % Switch statement to ensure the validity of the label/index
     switch(label_index_method)
         case "name"
             label_name = input("Please specify the label name (case sensitive): ", 's');
@@ -30,6 +38,8 @@ while ~label_specified
                 end
                
             end
+            
+            % Prompt if the label name isn't valid
             if ~label_specified
                 disp("You have not inputted a valid label name.")
             end
@@ -39,20 +49,24 @@ while ~label_specified
                 label_idx = index;
                 label_specified = true;
             end
+            
+            % Prompt if the index isn't valid
             if ~label_specified
                 disp("You have not inputted a valid index.")
             end
         otherwise
-            disp("You have not specify either name or index, try again.")
+            disp("You have not specified either name or index, try again.")
 
               
     end
 end
 
 y = {};
+% Gets the minimum and maximums of the data
 class_min = min(data(:,label_idx));
 class_max = max(data(:,label_idx));
 num_classes = class_max - class_min + 1;
+
 
 for idx = 1:num_rows
     temp_data = zeros([1, num_classes]);
@@ -60,6 +74,7 @@ for idx = 1:num_rows
     y{end + 1} = temp_data;
 end
 
+% Puts data until label_idx into an empty array
 data(:, label_idx) = [];
 x = {};
 
@@ -81,16 +96,22 @@ d_MSE = @(act, pred) (2 * (pred - act) /  max(size(act)));
 % Appending layers
 TestNet = Net(MSE, d_MSE);
 
+% Specify the activation function's type
 act_function_type = input("Please specify an activation function from sigmoid, tanh, relu, or leaky_relu: ", 's');
+
+% Specify neuron's amount
 neurons = input("Please specify the number of neurons in your first hidden layer: ");
+
 
 TestNet = TestNet.add(FC_Layer(num_cols, neurons));
 TestNet = TestNet.add(Activation_Layer(act_function_type));
 
 last = neurons;
 
+% Prompt for user to add layers 
 neurons = input("Please specify the number of neurons in your next hidden layer (input -1 at any time to stop adding layers): ");
 
+% Adds the fully connected layers and activation layers with the specified function
 while neurons > 0
     TestNet = TestNet.add(FC_Layer(last, neurons));
     TestNet = TestNet.add(Activation_Layer(act_function_type));
@@ -107,11 +128,13 @@ while train_prop > 1 || train_prop < 0
 end
 split = floor(train_prop * length);
 
+% Prompt to enter in epochs
 EPOCHS = input("Please input your desired number of training epochs: ");
 while EPOCHS < 1
     EPOCHS = input("Please input your desired number of training epochs: ");
 end
 
+% Prompt to enter in the initial learning rate
 LR = input("Please input your desired initial learning rate: ");
 
 % Training Model
