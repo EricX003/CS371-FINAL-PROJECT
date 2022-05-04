@@ -99,10 +99,6 @@ for idx = 1:length
 MSE = @(act, pred) (mean((act - pred) .^ 2) / max(size(act)));
 d_MSE = @(act, pred) (2 * (pred - act) /  max(size(act)));
 
-
-disp(x);
-disp(y);
-
 % Appending layers
 TestNet = Net(MSE, d_MSE);
 
